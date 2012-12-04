@@ -1,9 +1,4 @@
 <!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=en><![endif]-->
-<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang=en><![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9" lang=en><![endif]-->
-
-<!--[if gt IE 8]><!--> <html class=no-js lang=en> <!--<![endif]-->
 <head>
 	<meta charset=utf-8>
 	<meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
@@ -26,20 +21,23 @@
 function loadTimeout(){
         var 
         //超时秒数
-        second = 10
+        second = 1;
         //计时器
         timer = setInterval(function(){
             if(--second < 1){
-                document.getElementById('loading').innerHTML = '您当前的网络连接过慢！';
-                clearInterval(timer)
-            }
-        },1000);
+			 document.getElementById('load').style.display = 'none';
+			 document.getElementById('contain').style.display='block';
+			 $("img.thumb").show().lazyload();	
+			 clearInterval(timer);
+			}
+        },100);
         //注册事件
-        document.attachEvent ? document.attachEvent('onreadystatechange',CtrlLoad) : document.onreadystatechange = CtrlLoad;
+        //document.attachEvent ? document.attachEvent('onreadystatechange',CtrlLoad) : document.onreadystatechange = CtrlLoad;
         //控制加载
         function CtrlLoad(){
             if(document.readyState && ('complete' == document.readyState)){
-                document.getElementById('loading').style.display = 'none';
+                document.getElementById('load').style.display = 'none';
+				
                 clearInterval(timer)
             }
         }
@@ -47,46 +45,82 @@ function loadTimeout(){
     //调用
     loadTimeout();
 </script>
+
 </head>
 
 
 <body>
-<div id="loading">
+<div id="load">
+<img src='img/load.gif' height='16' width='16'/>
+</div>
+
+<div id="contain" style="padding-top:98px;">
+<div id="icon">
+ <ul><li><a href="javascript:void(0);"><img src="img/picon.jpg" height="32" width="32"></a></li><li><a href="javascript:void(0);"><img src="img/wicon.png" height="32" width="32"></a></li></ul>
 </div>
 <header>
   <div id="title">
-    <img src="img/logo.jpg" height="60" width="180">
+    <img src="img/logo.jpg" height="60" width="178">
   </div>
   <div class=" headernav clearfix">
     <nav id="navTop">
      <ul>
-     <li><a href="index.html" class="selected">FILMS</a></li>
-     <li><a href="company.html">COMPANY</a></li>
+     <li><a href="index.html" class="selected" data="作品集">FILMS</a></li>
+     <li><a href="company.html" data="公司介绍">COMPANY</a></li>
      </ul>
   </nav>
   <div id="menucontainer">
     <nav id="navMenu" class="headernav clearfix">
       <ul>
-     <li><a href="javascript:void(0);" class="selected">ALL</a></li>
-     <li><a href="javascript:void(0);">BY GENRE</a></li>
+      <li><a href="#about"  data="关于我们">ABOUT</a></li>
+     <li><a href="#team"   data="核心成员">TEAM</a></li>
+     <li><a href="#clients"   data="客户">CLIENTS</a></li>
+     <li><a href="#contact"   data="聊系方式">CONTACT</a></li>
      </ul>
     </nav>
-     <nav id="navDirector" class="headernav clearfix">
+     <nav id="about" class="childnav headernav clearfix">
       <ul>
-     <li><a href="javascript:void(0);">Micro Film</a></li>
-     <li><a href="javascript:void(0);">TVC</a></li>
-     <li><a href="javascript:void(0);">Viral Video</a></li>
-     <li><a href="javascript:void(0);">Others</a></li>
+     <li><a href="javascript:void(0);" class="first" data="微电影">Micro Film1</a></li>
+     <li><a href="javascript:void(0);" data="电视广告">TVC</a></li>
+     <li><a href="javascript:void(0);" data="病毒广告">Viral Video</a></li>
+     <li><a href="javascript:void(0);" data="其他">Others</a></li>
+     
+     </ul>
+    </nav>
+    <nav id="team" class="childnav headernav clearfix">
+      <ul>
+     <li><a href="javascript:void(0);" class="first" data="微电影">Micro Film2</a></li>
+     <li><a href="javascript:void(0);" data="电视广告">TVC</a></li>
+     <li><a href="javascript:void(0);" data="病毒广告">Viral Video</a></li>
+     <li><a href="javascript:void(0);" data="其他">Others</a></li>
+     
+     </ul>
+    </nav>
+    <nav id="clients" class="childnav headernav clearfix">
+      <ul>
+     <li><a href="javascript:void(0);" class="first" data="微电影">Micro Film3</a></li>
+     <li><a href="javascript:void(0);" data="电视广告">TVC</a></li>
+     <li><a href="javascript:void(0);" data="病毒广告">Viral Video</a></li>
+     <li><a href="javascript:void(0);" data="其他">Others</a></li>
+     
+     </ul>
+    </nav>
+     <nav id="contact" class="childnav headernav clearfix">
+      <ul>
+     <li><a href="javascript:void(0);" class="first" data="微电影">Micro Film4</a></li>
+     <li><a href="javascript:void(0);" data="电视广告">TVC</a></li>
+     <li><a href="javascript:void(0);" data="病毒广告">Viral Video</a></li>
+     <li><a href="javascript:void(0);" data="其他">Others</a></li>
      
      </ul>
     </nav>
     </div>
    </div> 
 </header>
-<div id="contain" style="padding-top:98px;">
-<div id="main" role="main">
+
+<div id="main">
    <div id="MainOverlay"></div>
-   <section id="box" class=" content clearfix">
+   <section id="box" class="content clearfix">
     <article class="loading">
        <div class="frame" >
          <div class="thumbCount" >
@@ -144,7 +178,7 @@ function loadTimeout(){
         <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
        </div>
      </article>
-     <article class="loading">
+      <article class="loading">
        <div class="frame" >
          <div class="thumbCount" >
            <a > 
@@ -243,6 +277,25 @@ function loadTimeout(){
        <div class="frame" >
          <div class="thumbCount" >
            <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/4.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
              <img class="thumb" src="img/loading.gif" data-original="img/1.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
            </a>
          </div>
@@ -315,10 +368,293 @@ function loadTimeout(){
         <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
        </div>
      </article>
-
-
+      <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/4.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/1.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a> 
+             <img class="thumb" src="img/loading.gif" data-original="img/2.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+       <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a> 
+             <img class="thumb" src="img/loading.gif" data-original="img/3.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/4.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+      <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/4.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/1.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a> 
+             <img class="thumb" src="img/loading.gif" data-original="img/2.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+       <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a> 
+             <img class="thumb" src="img/loading.gif" data-original="img/3.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/4.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/4.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/1.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a> 
+             <img class="thumb" src="img/loading.gif" data-original="img/2.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+       <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a> 
+             <img class="thumb" src="img/loading.gif" data-original="img/3.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
+     <article class="loading">
+       <div class="frame" >
+         <div class="thumbCount" >
+           <a > 
+             <img class="thumb" src="img/loading.gif" data-original="img/4.jpg" style="transition:opacity 0.75s linear 0s;opacity:1" />
+           </a>
+         </div>
+       </div>
+         <div class="overlay">
+         <a class="play  clearfix"><img src="img/playbtn.jpg" height="30" width="30"></a>
+        <p class="title red">AQUA</p>
+        <p class="text"><span class="grey">Year :</span><span class="red">2012</span></p>
+        <p class="text"><span class="grey">Client :</span><span class="red">NIVEA</span></p>
+        <p class="text"><span class="grey">Director :</span><span class="red">Daniel</span></p>
+        <p class="text"><span class="grey">Producer :</span><span class="red">DDS FILM</span></p>
+        <p class="text"><span class="grey">Agency :</span><span class="red">TBWA</span></p>
+        <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
+       </div>
+     </article>
    </section>
-
+   
 </div>
 
 <div id="player" class="Overlaybox">
@@ -333,7 +669,7 @@ function loadTimeout(){
         <p class="text"><span class="grey">Product :</span><span class="red">DDS FILM</span></p>
        </div>
       <div id="playerclose">
-       <span class="img left"><a href="javascript:void(0);" class="back"><img src="img/close.jpg" height="47" width="44"></a></span>
+       <span class="img left"><a href="javascript:void(0);" class="back"><img src="img/close.png" height="47" width="44"></a></span>
        <span class="left"><a href="javascript:void(0);" class="back  red">BACK</a></span>
       </div>
    </div>
@@ -341,14 +677,17 @@ function loadTimeout(){
      <img src="img/video.jpg" height="453" width="735">
    </div>
 </div>
-</div>
+
 <footer>
-  <span class="right">Copyright ddsfilm.com 2012 all rights reserved</span>
+  <span class="right">Copyright © ddsfilm.com 2012 all rights reserved </span>
 </footer>
+</div>
+
 
 <script type="text/javascript">
+
 $("document").ready(function(){
-	$("img.thumb").show().lazyload();
+
 	/*导航点击*/
 	$("#navTop li").click(function(){
 	  $(this).find("a").addClass("selected");
@@ -363,24 +702,82 @@ $("document").ready(function(){
 			$(this).find(".overlay").slideUp("fast");
 		});
 	});
+	/*
+	导航hover
+	*/
+	var ename;
+	var cname;
+	$(".headernav li").each(function(){
+		$(this).hover(function(){
+			ename=$(this).find('a').html();
+		    cname=$(this).find('a').attr('data');
+			$(this).find('a').attr('data',ename);
+			$(this).find('a').html(cname);
+		},
+		function(){
+			cname=$(this).find('a').html();
+		    ename=$(this).find('a').attr('data');
+			$(this).find('a').attr('data',cname);
+			$(this).find('a').html(ename);
+		});
+	});
+	/*
+	屏蔽右键
+	*/
+	/*document.body.oncontextmenu=function(event){
+	  var OvEvent=event?event:window.event;
+	  
+	  OvEvent.preventDefault();	
+	}*/
+	
+	$(".loading").each(function(){
+		
+	$(this).bind('mousedown',function(){
+		$("#MainOverlay").show();
+	    $("#player").fadeIn(1000);	
+	});
+	});
 	$("#navMenu li").each(function(){
-	  $(this).hover(
-	  function(){
-	   
+	 var id=$(this).find('a').attr('href');	
+	 $(this).hover(function(){
+		 $(".childnav").hide();
+		 $(this).siblings().find('a').removeClass('selected');
+		 $(this).find('a').addClass('selected');
+		 $(""+id+"").slideDown();
 	  },
 	  function(){
-	  
+		 $(this).find('a').removeClass('selected');
+	  });
+	});
+	setInterval(function(){
+	  var num=$("#navMenu .selected").size();
+	  if(num<1)
+	  $(".childnav").hide();	
+	},100);
+	$(".childnav").each(
+	function(){
+	  $(this).mouseover(function(){
+		var id=$(this).attr('id');
+		$("#navMenu a").removeClass('selected');
+	 	$("#navMenu a[href='#"+id+"']").addClass('selected');
+	  });	
+	  $(this).hover(
+	  function(){},
+	  function(){
+		  $(this).hide();
+		 $("#navMenu a").removeClass('selected');
 	  });
 	});
 	
+	
 	$(".play").click(function(){
 	 	
-	 $("#MainOverlay").fadeIn(500);
+	 $("#MainOverlay").show();
 	 $("#player").fadeIn(1000);	
 	
 	});
 	$("#player .back").click(function(){
-	 $("#MainOverlay").fadeOut(1000);
+	 $("#MainOverlay").hide();
 	 $("#player").fadeOut(500);
 	});
 	
@@ -390,6 +787,9 @@ $("document").ready(function(){
     $(window).resize(function(){
 	changeposition();
 	});
+	
+	
+	
 	function changeposition(){
 		var browwd=getTotalWidth();
 		
@@ -413,9 +813,11 @@ $("document").ready(function(){
 	}
 	function getTotalWidth(){
 	 if($.browser.msie){
-		 var wid=document.compatMode=="CSS1Compat"?document.documentElement.clientWidth:document.body.clientWidth;
-		 wid=wid-18;
 		 
+		 var wid=document.compatMode=="CSS1Compat"?document.documentElement.clientWidth:document.body.clientWidth;
+		if($.browser.version>6){
+		 wid=wid-18;
+		}
 	 }else{
 		 var wid=self.innerWidth-18;
 	 }
@@ -423,5 +825,11 @@ $("document").ready(function(){
 	}
 </script>
 
+<!--[if IE 6]>
+<script type="text/javascript" src="js/png.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('#navTop li a.selected,#box .overlay,#player div.left');
+</script>
+<![endif]-->
 </body>
 </html>

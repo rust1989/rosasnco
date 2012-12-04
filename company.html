@@ -26,20 +26,23 @@
 function loadTimeout(){
         var 
         //超时秒数
-        second = 10
+        second = 10;
         //计时器
         timer = setInterval(function(){
             if(--second < 1){
-                document.getElementById('loading').innerHTML = '您当前的网络连接过慢！';
-                clearInterval(timer)
-            }
-        },1000);
+			 document.getElementById('load').style.display = 'none';
+			 document.getElementById('contain').style.display='block';
+			 $("img.thumb").show().lazyload();	
+			 clearInterval(timer);
+			}
+        },100);
         //注册事件
-        document.attachEvent ? document.attachEvent('onreadystatechange',CtrlLoad) : document.onreadystatechange = CtrlLoad;
+        //document.attachEvent ? document.attachEvent('onreadystatechange',CtrlLoad) : document.onreadystatechange = CtrlLoad;
         //控制加载
         function CtrlLoad(){
             if(document.readyState && ('complete' == document.readyState)){
-                document.getElementById('loading').style.display = 'none';
+                document.getElementById('load').style.display = 'none';
+				
                 clearInterval(timer)
             }
         }
@@ -51,7 +54,8 @@ function loadTimeout(){
 
 
 <body>
-<div id="loading">
+<div id="load">
+<img src='img/load.gif' height='16' width='16'/>
 </div>
 <div id="contain">
 <header>
@@ -90,25 +94,25 @@ function loadTimeout(){
      <article class="intro">
        <div class="clearfix"><img src="img/p1.jpg" height="367" width="281"></div>
        <div class="infor">
-          <h4 class="clearfix"><span class="left">Jack LIN</span><span class="right"><img src="img/weibo.jpg" height="25" width="35"></span></h4>
-          <span class="clearfix grey">Administrator</span>
-          <span class="clearfix"><a href="#" class="grey">jack lin@ddsfilm.com</a></span>
+          <h4 class="clearfix"><span class="left">Jack LIN</span><span class="right"><img src="img/weibo.png" height="25" width="35"></span></h4>
+          <span id="intext" class="clearfix grey">Administrator</span>
+          <span id="intext" class="clearfix"><a href="#" class="grey">jack lin@ddsfilm.com</a></span>
        </div>
      </article>
       <article class="intro">
        <div class="clearfix"><img src="img/p2.jpg" height="367" width="281"></div>
        <div class="infor">
-          <h4 class="clearfix"><span class="left">Jack LIN</span><span class="right"><img src="img/weibo.jpg" height="25" width="35"></span></h4>
-          <span class="clearfix grey">Administrator</span>
-          <span class="clearfix"><a href="#" class="grey">jack lin@ddsfilm.com</a></span>
+          <h4 class="clearfix"><span class="left">Jack LIN</span><span class="right"><img src="img/weibo.png" height="25" width="35"></span></h4>
+          <span id="intext" class="clearfix grey">Administrator</span>
+          <span id="intext" class="clearfix"><a href="#" class="grey">jack lin@ddsfilm.com</a></span>
        </div>
      </article>
       <article class="intro">
        <div class="clearfix"><img src="img/p3.jpg" height="367" width="281"></div>
        <div class="infor">
-          <h4 class="clearfix"><span class="left">Jack LIN</span><span class="right"><img src="img/weibo.jpg" height="25" width="35"></span></h4>
-          <span class="clearfix grey">Administrator</span>
-          <span class="clearfix"><a href="#" class="grey">jack lin@ddsfilm.com</a></span>
+          <h4 class="clearfix"><span class="left">Jack LIN</span><span class="right"><img src="img/weibo.png" height="25" width="35"></span></h4>
+          <span id="intext" class="clearfix grey">Administrator</span>
+          <span id="intext" class="clearfix"><a href="#" class="grey">jack lin@ddsfilm.com</a></span>
        </div>
      </article>
    </section>
