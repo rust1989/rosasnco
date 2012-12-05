@@ -11,31 +11,85 @@ img{border:none;}
 
 
 
-header{position:fixed; _position:absolute; top:0px;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop)); z-index:10;width:100%; }
-#icon{position:fixed; right:10px; _position:absolute; top:17px;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+17)); z-index:11;width:100px; }
+header{position:fixed; _position:absolute; top:0px;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop)); z-index:12;width:100%; }
+#icon{position:fixed; right:10px; _position:absolute; top:17px;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop+17)); z-index:19;width:100px; }
 #icon ul li{float:left; margin-left:10px;}
 
-header #title{  height:80px; padding-top:17px; _margin-right:-3px;padding-left:35px;width:212px; float:left;border-right:1px solid #4f1511; background-color:#141414;}
+#title{  height:80px; padding-top:17px; _margin-right:-3px;padding-left:35px;width:212px; float:left;border-right:1px solid #4f1511; background-color:#141414;}
 header h1{padding:0px 17px;font-size:18px;float:left; }
 header #navTop{ height:62px; background-color: rgba(20, 20, 20, 0.9);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6141414,endColorstr=#E6141414);}
-#navTop li a{ padding:20px 30px 20px 30px; width:90px; text-align:center;  font-weight:bold;font-size:16px; line-height:22px;}
+#navTop li a{ padding:20px 30px; display:block; color:#747474; width:90px; text-align:center;  font-weight:bold;font-size:16px; line-height:22px;}
 #navTop li a.selected{ color:#e61a11; background:url(../img/nbg.png) no-repeat;}
+#navTop li{float:left; height:62px;border-right:1px solid #4f1511}
 
+#top-navigation {
+	height:36px;
+	 background-color: rgba(20, 20, 20, 0.9);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6141414,endColorstr=#E6141414);
+	border-top:1px solid #4f1511
+}
+.menu-item {
+    position: relative;
+	border-right:1px solid #4f1511;
+    z-index: 2;
+    float: left;
+    font-size: 14px;
+    width: 115px;
+	padding:0px 30px;
+    line-height: 35px;
+    list-style-type: none;
+    text-align: center;
+    display: inline;
+	background-color:#272727;
+}
 
-.headernav li{float:left;}
-.headernav li a{ color:#747474; vertical-align:middle;/*transition:background-color 0.5s linear 0s;-webkit-transition:background-color 0.5s linear 0s;*/ border-right:1px solid #4f1511; display:block}
-.headernav li a:hover,.headernav li a:hover.selected{color:#747474;text-shadow:0 -1px 2px rgba(0, 0, 0, 0.5);/*background-color:rgba(106, 0, 0, 0.8);  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC6a0000,endColorstr=#CC6a0000);*/}
+.menu .has-sub-menu {
+    line-height: 35px;
+}
 
+.sub-menu .has-sub-menu {
+    border-top: none;
+    line-height: 35px;
+    width: 112px;
+}
+.menu .selected{ background-color:#e71a11; }
+.menu-item a:link, .menu-item a:visited, .menu-item a:hover {
+    font-weight: bold;
+    display: block;
+    width: 100%;
+	  color: #747474;
+    overflow: hidden;
+}
 
-header #menucontainer{ /*display:block;*/  border-top:1px solid #4f1511; }
-#navMenu{ height:35px; background-color: rgba(20, 20, 20, 0.9);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6141414,endColorstr=#E6141414);}
-#navMenu li a{ line-height:15px; width:80px; text-align:center;font-weight:bold; font-size:14px; line-height:24px; padding:5px 60px; transition:background-color 0.5s linear 0s;-webkit-transition:background-color 0.5s linear 0s;background-color: rgba(39, 39, 39, 0.9);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6272727,endColorstr=#E6272727);}
-#navMenu li a:hover,#navMenu li a:hover.selected,#navDirector li a:hover,#navDirector li a:hover.selected{text-shadow:0 -1px 2px rgba(0, 0, 0, 0.5);/*background-color:rgba(106, 0, 0, 0.8); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC6a0000,endColorstr=#CC6a0000);*/}
-#navMenu li a.selected{background-color:rgba(231, 26, 17, 0.9); color:#fdfcfc; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6e71a11,endColorstr=#E6e71a11);}
-.childnav{ display:none; margin-left:247px;border-top:1px solid #4f1511; }
-.childnav li{width:25%; text-align:center;}
-.childnav li a{background-color:rgba(28, 28, 28, 0.9);line-height:15px;font-weight:bold; font-size:14px; padding:10px 0px; display:block; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E61c1c1c,endColorstr=#E61c1c1c0);border-bottom:1px solid #4f1511}
-.childnav li a.first{border-left:1px solid #4f1511;}
+.menu-item a:hover {
+	
+    text-decoration: none;
+}
+
+.menu-item .sub-menu {
+    display: none;
+    position: absolute;
+    z-index: 3;
+	border-left:1px solid #4f1511;
+    top: 35px;
+    left: 0;
+    margin: 0;
+	width:1000px;
+	border-top:1px solid #4f1511;
+}
+
+.sub-menu li {
+	background-color: rgba(20, 20, 20, 0.9);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E6141414,endColorstr=#E6141414);
+    margin-left: 0;
+	padding:0px 60px;
+	border-bottom:1px solid #4f1511;
+}
+.sub-menu .sub-menu {
+    top: 0;
+    left: 115px;
+    z-index: 4;
+}
+
 
 #box{}
 #box article{float:left; }
@@ -67,11 +121,12 @@ img.thumb{height:auto;width:100%; display:none;}
 #player .right{width:735px; height:452px;}
 .Overlaybox{ display:none;position:fixed;bottom:40px;_bottom:auto; _position:absolute; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-30-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))); _position:absolute;z-index:11;left:50%;}
 /*company*/
-.intro{ width:281px; margin:20px 5px 0px 5px;}
-.infor{ margin-top:5px; padding:10px; background:url(../img/inbg.png) no-repeat; height:90px }
-.infor h4{ color:#FFF; font-size:16px;}
-#intext{margin:5px 0px; display:block;}
+.intro{ width:281px; margin:20px 5px 0px 5px; }
+.infor{ margin-top:5px; padding:10px; background:url(../img/inbg.jpg) no-repeat; height:90px;position:relative; }
+.infor h4{ color:#FFF; font-size:16px;  width:100%; line-height:30px;}
+#intext{margin:5px 0px;width:100%; display:block;}
 .infor span a{text-decoration:underline;}
+.infor #weibo{position:absolute; z-index:1; right:5px; top:10px;}
 
 /*footer*/
 footer{ background-color:#141414; width:100%;/* position:fixed; _position:absolute; bottom:0px; _bottom:auto; _top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))); z-index:1002*/}

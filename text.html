@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js导航菜单制作一个二级滑动导航菜单</title>
+<meta name="description" content="js特效制作js二级导航菜单，类似选项卡切换的导航菜单，当前频道一直高亮显示。" />
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font-family:Tahoma, Verdana, Arial, sans-serif;font-size:12px;color:#333333;}
+a{color:#333333;text-decoration:none;}
+a:hover{color:#FF0000;text-decoration:none;}
+/* menu */
+#menu{height:32px;margin-top:8px;background-color:#990000;}
+#menu ul{width:778px;height:32px;margin:0 auto;}
+#menu .m_li{float:left;width:114px;line-height:32px;text-align:center;margin:0px -2px;}
+#menu .m_li a{display:block;color:#FFFFFF;width:114px;}
+#menu .m_line{float:left;width:1px;height:32px;line-height:32px;/*ff下有效(图片垂直居中)*/}
+#menu .m_line img{margin-top:expression(( 32 - this.height ) / 2);/*ie下有效(图片垂直居中)*/}
+#menu .m_li_a{float:left;width:114px;line-height:32px;text-align:center;padding-top:3px;font-weight:bold;position:relative;height:32px;margin:-3px -2px 0 -2px;}
+#menu .m_li_a a{display:block;color:#FF0000;width:114px;}
+/* subbox */
+.subbox{height:32px;}
+.subbox .smenu{width:774px;margin:0px auto;height:32px;}
+.subbox li{line-height:32px;height:32px;}
+.subbox .s_li{display:none;}
+.subbox .s_li_a{display:block;}
+
+.clearfix:after{ clear:both;}
+.clearfix:before,.clearfix:after{content:""; display:table;}
+</style>
+
+<script type="text/javascript">
+function mover(object){
+	//主菜单
+	var mm=document.getElementById("m_"+object);
+	mm.className="m_li_a";
+	
+	//子菜单
+	var ss=document.getElementById("s_"+object);
+	ss.style.display="block";
+}
+
+function mout(object){
+
+	//主菜单
+	var mm=document.getElementById("m_"+object);
+	mm.className="m_li";
+
+	//子菜单
+	var ss=document.getElementById("s_"+object);
+	ss.style.display="none";
+
+	
+}
+</script>
+</head>
+<body>
+
+	<div id="menu">
+		<ul>
+			<li id="m_1" class='m_li'><a href="http://www.jsfoot.com/">首页</a></li>
+			<li id="m_2" class='m_li' onmouseover='mover(2);' onmouseout='mout(2);'><a href="http://www.jsfoot.com/jquery/">jquery 特效</a></li>
+			<li id="m_3" class='m_li' onmouseover='mover(3);' onmouseout='mout(3);'><a href="http://www.jsfoot.com/js/">javascript特效</a></li>
+			<li id="m_4" class='m_li' onmouseover='mover(4);' onmouseout='mout(4);'><a href="http://www.jsfoot.com/flash/">flash特效</a></li>
+			<li id="m_5" class='m_li' onmouseover='mover(5);' onmouseout='mout(5);'><a href="http://www.jsfoot.com/css3/">div+css教程</a></li>
+			<li id="m_6" class='m_li' onmouseover='mover(6);' onmouseout='mout(6);'><a href="http://www.jsfoot.com/html5/">html5教程</a></li>
+		</ul>
+	</div><!--menu end-->
+	
+	<div class="subbox">
+		<ul class="smenu">
+			<li style="padding-left:29px;" id="s_1" class='s_li'>jsfoot 网页特效主要有jquery 特效 js特效 flash特效 div+css教程 html5教程</li>
+			<li style="padding-left:141px;" id="s_2" class='s_li' onmouseover='mover(2);' onmouseout='mout(2);'>
+				<a href="http://www.jsfoot.com/jquery/images/" target="_blank" title="jquery图片特效">jquery图片特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/jquery/menu/" target="_blank" title="jquery导航菜单">jquery导航菜单</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/jquery/xxk/" target="_blank" title="jquery选项卡特效">jquery选项卡特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/jquery/letter/" target="_blank" title="jquery文字特效">jquery文字特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/jquery/form/" target="_blank" title="jquery表单特效">jquery表单特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/jquery/table/" target="_blank" title="jquery表格特效">jquery表格特效</a>
+			</li>
+			<li style="padding-left:252px;" id="s_3" class='s_li' onmouseover='mover(3);' onmouseout='mout(3);'>
+				<a href="http://www.jsfoot.com/js/images/" target="_blank" title="js图片特效">js图片特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/js/menu/" target="_blank" title="js导航菜单">js导航菜单</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/js/xxk/" target="_blank" title="js选项卡特效">js选项卡特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/js/letter/" target="_blank" title="js文字特效">js文字特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/js/form/" target="_blank" title="js表单特效">js表单特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/js/table/" target="_blank" title="js表格特效">js表格特效</a>
+			</li>
+			<li style="padding-left:362px;" id="s_4" class='s_li' onmouseover='mover(4);' onmouseout='mout(4);'>
+				<a href="http://www.jsfoot.com/flash/images/" target="_blank" title="flash图片特效">flash图片特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/flash/menu/" target="_blank" title="flash导航菜单">flash导航菜单</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/flash/letter/" target="_blank" title="flash文字特效">flash文字特效</a>
+			</li>
+			<li style="padding-left:474px;" id="s_5" class='s_li' onmouseover='mover(5);' onmouseout='mout(5);'>
+				<a href="http://www.jsfoot.com/css3/layout/" target="_blank" title="div+css布局">div+css布局</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/css3/menu/" target="_blank" title="div+css菜单">div+css菜单</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/css3/css3/" target="_blank" title="css3教程">css3教程</a>
+			</li>
+			<li style="padding-left:407px;" id="s_6" class='s_li' onmouseover='mover(6);' onmouseout='mout(6);'>
+				<a href="http://www.jsfoot.com/html5/tx/" target="_blank" title="html5特效">html5特效</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href="http://www.jsfoot.com/html5/tb/" target="_blank" title="html5图表">html5图表</a>
+			</li>
+		</ul>
+	</div><!--subbox end-->
+    </div>
+</body>
+</html>

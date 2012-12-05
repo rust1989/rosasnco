@@ -15,7 +15,7 @@
     <script type="text/javascript" src="js/lazy.js"></script>
     <link href="css/base.css" rel="stylesheet" type="text/css" />
 	<!--[if IE]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="js/html5.js"></script>
 <![endif]-->
 <script type="text/javascript">
 function loadTimeout(){
@@ -69,54 +69,59 @@ function loadTimeout(){
      <li><a href="company.html" data="公司介绍">COMPANY</a></li>
      </ul>
   </nav>
-  <div id="menucontainer">
-    <nav id="navMenu" class="headernav clearfix">
-      <ul>
-      <li><a href="#about"  data="关于我们">ABOUT</a></li>
-     <li><a href="#team"   data="核心成员">TEAM</a></li>
-     <li><a href="#clients"   data="客户">CLIENTS</a></li>
-     <li><a href="#contact"   data="聊系方式">CONTACT</a></li>
-     </ul>
-    </nav>
-     <nav id="about" class="childnav headernav clearfix">
-      <ul>
-     <li><a href="javascript:void(0);" class="first" data="微电影">Micro Film1</a></li>
-     <li><a href="javascript:void(0);" data="电视广告">TVC</a></li>
-     <li><a href="javascript:void(0);" data="病毒广告">Viral Video</a></li>
-     <li><a href="javascript:void(0);" data="其他">Others</a></li>
-     
-     </ul>
-    </nav>
-    <nav id="team" class="childnav headernav clearfix">
-      <ul>
-     <li><a href="javascript:void(0);" class="first" data="微电影">Micro Film2</a></li>
-     <li><a href="javascript:void(0);" data="电视广告">TVC</a></li>
-     <li><a href="javascript:void(0);" data="病毒广告">Viral Video</a></li>
-     <li><a href="javascript:void(0);" data="其他">Others</a></li>
-     
-     </ul>
-    </nav>
-    <nav id="clients" class="childnav headernav clearfix">
-      <ul>
-     <li><a href="javascript:void(0);" class="first" data="微电影">Micro Film3</a></li>
-     <li><a href="javascript:void(0);" data="电视广告">TVC</a></li>
-     <li><a href="javascript:void(0);" data="病毒广告">Viral Video</a></li>
-     <li><a href="javascript:void(0);" data="其他">Others</a></li>
-     
-     </ul>
-    </nav>
-     <nav id="contact" class="childnav headernav clearfix">
-      <ul>
-     <li><a href="javascript:void(0);" class="first" data="微电影">Micro Film4</a></li>
-     <li><a href="javascript:void(0);" data="电视广告">TVC</a></li>
-     <li><a href="javascript:void(0);" data="病毒广告">Viral Video</a></li>
-     <li><a href="javascript:void(0);" data="其他">Others</a></li>
-     
-     </ul>
-    </nav>
-    </div>
+    
+<div id="top-navigation">	
+<ul class="menu" id="menu-top-navigation">
+    <li class="menu-item">
+        <a href="">ABOUT</a>
+    </li>
+
+    <li class="menu-item">
+        <a href="">TEAM</a>
+        <ul class="sub-menu">
+            <li class="first menu-item">
+                <a href="">Micro Film</a>
+            </li>
+            <li class="menu-item">
+                <a href="">TVC</a>
+            </li>
+            <li class="menu-item">
+                <a href="">Viral Video</a>
+            </li>
+            <li class="menu-item">
+                <a href="">Others</a>
+            </li>
+        </ul>
+    </li>
+   <li class="menu-item">
+        <a href="">CLIENTS</a>
+          <ul class="sub-menu">
+            <li class="first menu-item">
+                <a href="">Micro Film</a>
+            </li>
+            <li class="menu-item">
+                <a href="">TVC</a>
+            </li>
+            <li class="menu-item">
+                <a href="">Viral Video</a>
+            </li>
+            <li class="menu-item">
+                <a href="">Others</a>
+            </li>
+        </ul>
+    </li>
+    <li class="menu-item">
+        <a href="">CONTACT</a>
+    </li>
+</ul>
+</div> 
+
+
    </div> 
 </header>
+  
+
+
 
 <div id="main">
    <div id="MainOverlay"></div>
@@ -707,7 +712,7 @@ $("document").ready(function(){
 	*/
 	var ename;
 	var cname;
-	$(".headernav li").each(function(){
+	/*$(".headernav li").each(function(){
 		$(this).hover(function(){
 			ename=$(this).find('a').html();
 		    cname=$(this).find('a').attr('data');
@@ -720,7 +725,7 @@ $("document").ready(function(){
 			$(this).find('a').attr('data',cname);
 			$(this).find('a').html(ename);
 		});
-	});
+	});*/
 	/*
 	屏蔽右键
 	*/
@@ -730,6 +735,16 @@ $("document").ready(function(){
 	  OvEvent.preventDefault();	
 	}*/
 	
+	$("#menu li.parent").each(function(){
+	  $(this).hover(function(){
+		  $(this).find('.child').stop().show().animate({'opacity':'1','height':'500px'},500);
+	   },function(){
+		   $(this).find('.child').stop().hide().animate({'opacity':'0','height':'0px'},500); 
+	   });	
+	});
+	
+	
+	
 	$(".loading").each(function(){
 		
 	$(this).bind('mousedown',function(){
@@ -737,37 +752,7 @@ $("document").ready(function(){
 	    $("#player").fadeIn(1000);	
 	});
 	});
-	$("#navMenu li").each(function(){
-	 var id=$(this).find('a').attr('href');	
-	 $(this).hover(function(){
-		 $(".childnav").hide();
-		 $(this).siblings().find('a').removeClass('selected');
-		 $(this).find('a').addClass('selected');
-		 $(""+id+"").slideDown();
-	  },
-	  function(){
-		 $(this).find('a').removeClass('selected');
-	  });
-	});
-	setInterval(function(){
-	  var num=$("#navMenu .selected").size();
-	  if(num<1)
-	  $(".childnav").hide();	
-	},100);
-	$(".childnav").each(
-	function(){
-	  $(this).mouseover(function(){
-		var id=$(this).attr('id');
-		$("#navMenu a").removeClass('selected');
-	 	$("#navMenu a[href='#"+id+"']").addClass('selected');
-	  });	
-	  $(this).hover(
-	  function(){},
-	  function(){
-		  $(this).hide();
-		 $("#navMenu a").removeClass('selected');
-	  });
-	});
+
 	
 	
 	$(".play").click(function(){
@@ -787,9 +772,7 @@ $("document").ready(function(){
     $(window).resize(function(){
 	changeposition();
 	});
-	
-	
-	
+
 	function changeposition(){
 		var browwd=getTotalWidth();
 		
@@ -816,7 +799,7 @@ $("document").ready(function(){
 		 
 		 var wid=document.compatMode=="CSS1Compat"?document.documentElement.clientWidth:document.body.clientWidth;
 		if($.browser.version>6){
-		 wid=wid-18;
+		 wid=wid-5;
 		}
 	 }else{
 		 var wid=self.innerWidth-18;
@@ -824,7 +807,101 @@ $("document").ready(function(){
 	  return wid;	
 	}
 </script>
+<script type="text/javascript">
+ (function($){
+    $.fn.extend({
+        dropMenu: function(menuItem, subMenuItem){
+            var root = $(this), // 首先找到菜单（的根节点） 
+                CLS_HAS_MENU = 'has-sub-menu', 
+                isIE = $.browser.msie, // 是否为 IE 浏览器
+                version = $.browser.version; // 浏览器的版本
+			
+            
+            // 没有找到菜单则退出
+            // root.find(':first') 都是得到 document.getElementById('top-navigation')
+            if (!root[0]) {
+                return false;
+            }
+            
+            // 默认的菜单标签为 li 标签（选择器）
+            if (!menuItem) {
+                menuItem = 'li';
+            }
 
+            // 默认的子菜单标签为 ul 标签（选择器）
+            if (!subMenuItem) {
+                subMenuItem = 'ul';
+            }
+            
+            // $(root).find(menuItem) 找到导航菜单下所有的 li 节点
+            // 通过 each() 遍历添加相应的处理事件 mouseover,mouseout 和 tab 操作的支持
+           var wid;
+		   var left;
+		    $(root).find(menuItem).each(function(i, li){
+				
+            var curMenu = $(li),
+			
+                // 找到 li 下的第一个 a 标签，添加 tab 键的支持时需要用到的
+            curLink = curMenu.is('a') ? curMenu : $(curMenu.find('a:first')), 
+            // 找到当前 li 标签下的子菜单
+            subMenus = $(subMenuItem, curMenu), 
+			
+            // 判断是否有子菜单节点
+            hasMenu = subMenus.length >= 1, 
+            // 当前 li 标签下的子菜单
+            curSubMenu = null,
+            // 当前子菜单的最后一项（a 标签） 
+            curSubMenuLastItem = null;
+            // 显示子菜单
+            show = function(){
+                // show sub menu 发现 IE6 中使用 show() 方无法显示二级以下的子菜单
+                // 所以很无赖的 hack 了一下
+                if (!isIE || (isIE && version > 6)) {
+                    curSubMenu.show(200);
+                }
+                else {
+                    curSubMenu.css('display', 'block');
+                }
+				curMenu.addClass("selected");
+            }, 
+            // 隐藏子菜单
+            hide = function(){
+                // hide sub menu
+                if (!isIE || (isIE && version > 6)) {
+                    curSubMenu.hide(150);
+                }
+                else {
+                    curSubMenu.css('display', 'none');
+                }
+				curMenu.removeClass("selected");
+            };
+            
+            // 只在有子菜单的时候才做相应的处理
+            if (hasMenu) {
+                
+				
+                // 找到当前 li 对应的子菜单，而不是把更次级的子菜单都找到
+                // 不习惯用 subMenus.get(0)
+                curSubMenu = $(subMenus[0]);
+                // 当前子菜单的最后一项（a 标签） 
+				curSubMenuLastItem = curSubMenu.find('a:last');
+				
+                // mouse event
+                curMenu.hover(show, hide);
+                // key(tab key) event
+                // 获得焦点是在当前 li 下的第一个A标签上处理
+                curLink.focus(show);
+                // 失去焦点则需要是tab让子菜单的最后一个菜单项都走过了，才关闭子菜单
+                curSubMenuLastItem.blur(hide);
+            }
+            });
+        }
+    });
+    
+    $('#top-navigation').dropMenu();
+    
+})(jQuery);	
+</script>
 <!--[if IE 6]>
 <script type="text/javascript" src="js/png.js"></script>
 <script type="text/javascript">
